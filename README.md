@@ -13,6 +13,12 @@ provides a list of real dog breeds
 provides a real photo of each dog
 * Faker GEM generates fake reviews
 
+* Tables & ERD
+
+Breeds stores the dog breed names and a photo URL of what the dog breed looks like.
+Reviews stores user reviews of each breed, fake information is genereated by Faker. Each review includes a rating, comment and trait scores.
+<img width="601" height="301" alt="Intro_To_Rails_Dog_Breds drawio" src="https://github.com/user-attachments/assets/bbcb029b-8060-4b47-ba6e-955bbf178d36" />
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
