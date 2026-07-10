@@ -1,22 +1,42 @@
-<h1><%= @breed.name %></h1>
-
-<%= image_tag @breed.image_url, width: 400 %>
-
-<p>Group: <%= @breed.group.name %></p>
-<p><%= @breed.reviews.count %> reviews</p>
-<p>Average rating: <%= @breed.reviews.average(:rating).round(1) %>/5</p>
-
-<%= link_to "Back to all breeds", breeds_path %>
-
-<h2>Reviews</h2>
-
-<% @breed.reviews.each do |review| %>
-  <div>
-    <h4><%= review.reviewer_name %></h4>
-    <p>Rating: <%= review.rating %>/5</p>
-    <p>Playfulness: <%= review.playfulness %>/5</p>
-    <p>Affection: <%= review.affection %>/5</p>
-    <p>Ease of care: <%= review.ease_of_care %>/5</p>
-    <p><%= review.comment %></p>
+<div class="page-body">
+  <div class="card breed-detail">
+    <div class="row">
+      <div class="col-md-6">
+        <%= image_tag @breed.image_url, class: "img-fluid" %>
+      </div>
+      <div class="col-md-6">
+        <h1><%= @breed.name %></h1>
+        <p>Group: <%= @breed.group.name %></p>
+        <% if @breed.reviews.any? %>
+          <p>Reviews: <%= @breed.reviews.count %></p>
+          <p>Average rating: <%= @breed.reviews.average(:rating).round(1) %>/5 ⭐</p>
+        <% else %>
+          <p>This breed has no reviews yet.</p>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
+
+  <div class="back-link-row">
+    <%= link_to "< Back to all breeds", breeds_path, class: "back-link" %>
+  </div>
+
+  <h2>Reviews</h2>
+
+  <div class="row">
+    <% @breed.reviews.each do |review| %>
+      <div class="col-md-6">
+        <div class="card review-card">
+          <div class="card-body">
+            <h4 class="reviewer-name"><%= review.reviewer_name %></h4>
+            <p>Rating: <%= review.rating %>/5 ⭐</p>
+            <p>🎮 Playfulness: <%= review.playfulness %>/5</p>
+            <p>❤️ Affection: <%= review.affection %>/5</p>
+            <p>🫂 Ease of care: <%= review.ease_of_care %>/5</p>
+            <p>💬 Comment: <%= review.comment %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
