@@ -20,9 +20,9 @@
     <% @breeds.each do |breed| %>
       <div class="col-md-4">
         <div class="card mb-4">
-          <%= image_tag breed.image_url, class: "card-img-top" %>
+          <%= image_tag breed.image_url, class: "card-img-top", alt: breed.name %>
           <div class="card-body">
-            <h3 class="card-title"><%= breed.name %></h3>
+            <h2 class="card-title"><%= breed.name %></h2>
             <p>Group: <%= breed.group.name %></p>
             <% if breed.reviews.count > 0 %>
               <p>Reviews: <%= breed.reviews.count %></p>
