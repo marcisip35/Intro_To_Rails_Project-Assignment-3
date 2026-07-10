@@ -1,0 +1,12 @@
+<h1>Dog Breeds</h1>
+
+<p>Browse <%= @breeds.count %> dog breeds and see what owners think of them.</p>
+
+<% @breeds.each do |breed| %>
+  <div>
+    <%= image_tag breed.image_url, width: 200 %>
+    <h3><%= link_to breed.name, breed_path(breed) %></h3>
+    <p>Group: <%= breed.group.name %></p>
+    <p><%= breed.reviews.count %> reviews</p>
+  </div>
+<% end %>
