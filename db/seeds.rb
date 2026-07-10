@@ -5,7 +5,7 @@ Review.destroy_all
 Breed.destroy_all
 Group.destroy_all
 
-# 
+# Dog Breed Groups
 GROUP_NAMES = [
   "Herding", "Sporting", "Toy", "Working",
   "Terrier", "Hound", "Non-Sporting"
@@ -17,6 +17,7 @@ end
 
 puts "Created #{Group.count} groups"
 
+# API Call
 response = HTTParty.get("https://dog.ceo/api/breeds/list/all")
 breed_names = response["message"].keys
 
@@ -33,10 +34,15 @@ end
 
 puts "Created #{Breed.count} breeds"
 
+# Reviews
 COMMENTS = [
   "Great with kids and very patient.",
+  "Loves cuddling specially at night.",
+  "This dog can be pretty aggressive when not trained properly.",
+  "Shy breed, takes time to get to know someone.",
   "Needs a lot of exercise but worth it.",
   "Sheds more than I expected.",
+  "This breed barks alot but isn't loud.",
   "Learns new tricks in a couple of days.",
   "Barks at everything that moves.",
   "Perfect apartment dog, very quiet.",
