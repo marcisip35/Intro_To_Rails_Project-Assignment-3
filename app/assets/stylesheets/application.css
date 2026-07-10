@@ -72,8 +72,7 @@ body {
 }
 
 .header-search-btn:hover {
-  background: var(--brand-blue);
-  border: 2px solid var(--brand-navy);
+  background: skyblue;
 }
 
 .header-group-select {
