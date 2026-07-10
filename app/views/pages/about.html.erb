@@ -1,127 +1,83 @@
-<h1>About This Project</h1>
+<div class="page-body about-page">
+  <section class="about-section">
+    <h1>About This Project</h1>
+    <p>This site lists dog breeds with images and reviews, to help future or current
+    dog owners figure out which breed suits them based on personality and ease of care.</p>
+  </section>
 
-<p>This site lists dog breeds with images and reviews, to help future or current
-dog owners figure out which breed suits them based on personality and ease of care.</p>
+  <section class="about-section">
+    <h2>Data Sources</h2>
 
-<h2>Data Sources</h2>
+    <h3>Dog CEO API</h3>
+    <p>The breed list endpoint gives every real dog breed name, which is stored in the
+    breeds table. The breed images endpoint gives a real photo of each breed, stored as
+    an image URL on the same table.</p>
 
-<h3>Dog CEO API</h3>
-<p>The breed list endpoint gives every real dog breed name, which is stored in the
-breeds table. The breed images endpoint gives a real photo of each breed, stored as
-an image URL on the same table.</p>
+    <h3>Faker Gem</h3>
+    <p>Faker generates all of the review data, including the reviewer names, ratings,
+    comments, and the three trait scores for playfulness, affection, and ease of care.</p>
+  </section>
 
-<h3>Faker Gem</h3>
-<p>Faker generates all of the review data, including the reviewer names, ratings,
-comments, and the three trait scores for playfulness, affection, and ease of care.</p>
+  <section class="about-section">
+    <h2>Groups</h2>
+    <div class="group-row">
+      <% Group.all.each do |group| %>
+        <div class="group-chip"><%= group.name %></div>
+      <% end %>
+    </div>
+  </section>
 
-<h2>Database Structure</h2>
+  <section class="about-section">
+    <h2>Database Structure</h2>
 
-<h3>Groups</h3>
-<table border="1">
-  <tr>
-    <th>Column</th>
-    <th>Type</th>
-  </tr>
-  <tr>
-    <td>id</td>
-    <td>integer (PK)</td>
-  </tr>
-  <tr>
-    <td>name</td>
-    <td>string</td>
-  </tr>
-  <tr>
-    <td>created_at</td>
-    <td>timestamp</td>
-  </tr>
-  <tr>
-    <td>updated_at</td>
-    <td>timestamp</td>
-  </tr>
-</table>
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Groups</h3>
+        <table class="table about-table">
+          <tr><th>Type</th><th>Column</th></tr>
+          <tr><td>integer (PK)</td><td>id</td></tr>
+          <tr><td>string</td><td>name</td></tr>
+          <tr><td>timestamp</td><td>created_at</td></tr>
+          <tr><td>timestamp</td><td>updated_at</td></tr>
+        </table>
+      </div>
 
-<h3>Breeds</h3>
-<table border="1">
-  <tr>
-    <th>Column</th>
-    <th>Type</th>
-  </tr>
-  <tr>
-    <td>id</td>
-    <td>integer (PK)</td>
-  </tr>
-  <tr>
-    <td>name</td>
-    <td>string</td>
-  </tr>
-  <tr>
-    <td>image_url</td>
-    <td>string</td>
-  </tr>
-  <tr>
-    <td>group_id</td>
-    <td>integer (FK)</td>
-  </tr>
-  <tr>
-    <td>created_at</td>
-    <td>timestamp</td>
-  </tr>
-  <tr>
-    <td>updated_at</td>
-    <td>timestamp</td>
-  </tr>
-</table>
+      <div class="col-md-4">
+        <h3>Breeds</h3>
+        <table class="table about-table">
+          <tr><th>Type</th><th>Column</th></tr>
+          <tr><td>integer (PK)</td><td>id</td></tr>
+          <tr><td>string</td><td>name</td></tr>
+          <tr><td>string</td><td>image_url</td></tr>
+          <tr><td>integer (FK)</td><td>group_id</td></tr>
+          <tr><td>timestamp</td><td>created_at</td></tr>
+          <tr><td>timestamp</td><td>updated_at</td></tr>
+        </table>
+      </div>
 
-<h3>Reviews</h3>
-<table border="1">
-  <tr>
-    <th>Column</th>
-    <th>Type</th>
-  </tr>
-  <tr>
-    <td>id</td>
-    <td>integer (PK)</td>
-  </tr>
-  <tr>
-    <td>reviewer_name</td>
-    <td>string</td>
-  </tr>
-  <tr>
-    <td>rating</td>
-    <td>integer</td>
-  </tr>
-  <tr>
-    <td>comment</td>
-    <td>text</td>
-  </tr>
-  <tr>
-    <td>playfulness</td>
-    <td>integer</td>
-  </tr>
-  <tr>
-    <td>affection</td>
-    <td>integer</td>
-  </tr>
-  <tr>
-    <td>ease_of_care</td>
-    <td>integer</td>
-  </tr>
-  <tr>
-    <td>breed_id</td>
-    <td>integer (FK)</td>
-  </tr>
-  <tr>
-    <td>created_at</td>
-    <td>timestamp</td>
-  </tr>
-  <tr>
-    <td>updated_at</td>
-    <td>timestamp</td>
-  </tr>
-</table>
+      <div class="col-md-4">
+        <h3>Reviews</h3>
+        <table class="table about-table">
+          <tr><th>Type</th><th>Column</th></tr>
+          <tr><td>integer (PK)</td><td>id</td></tr>
+          <tr><td>string</td><td>reviewer_name</td></tr>
+          <tr><td>integer</td><td>rating</td></tr>
+          <tr><td>text</td><td>comment</td></tr>
+          <tr><td>integer</td><td>playfulness</td></tr>
+          <tr><td>integer</td><td>affection</td></tr>
+          <tr><td>integer</td><td>ease_of_care</td></tr>
+          <tr><td>integer (FK)</td><td>breed_id</td></tr>
+          <tr><td>timestamp</td><td>created_at</td></tr>
+          <tr><td>timestamp</td><td>updated_at</td></tr>
+        </table>
+      </div>
+    </div>
 
-<p>A group has many breeds, and a breed has many reviews.</p>
+    <p>A group has many breeds, and a breed has many reviews.</p>
+  </section>
 
-<h2>Entity Relationship Diagram</h2>
-
-<%= image_tag "Intro_To_Rails_Dog_Breeds_ERD.png", width: 700 %>
+  <section class="about-section">
+    <h2>Entity Relationship Diagram</h2>
+    <%= image_tag "Intro_To_Rails_Dog_Breeds_ERD.png", alt: "Dog Breeds ERD", class: "about-erd" %>
+  </section>
+</div>
