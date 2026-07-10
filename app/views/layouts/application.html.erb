@@ -14,7 +14,9 @@
     <header class="site-header">
       <div class="header-inner">
         <div class="brand"><%= link_to "Dog Breeds For You", root_path %></div>
-        <input type="text" class="header-search" placeholder="Search breeds">
+        <%= form_with url: breeds_path, method: :get, local: true, class: "header-search-form" do %>
+          <%= text_field_tag :query, params[:query], placeholder: "Search breeds", class: "header-search" %>
+        <% end %>
         <nav class="header-nav">
           <%= link_to "Home", root_path %>
           <%= link_to "All Breeds", breeds_path %>
