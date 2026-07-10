@@ -1,0 +1,127 @@
+<h1>About This Project</h1>
+
+<p>This site lists dog breeds with images and reviews, to help future or current
+dog owners figure out which breed suits them based on personality and ease of care.</p>
+
+<h2>Data Sources</h2>
+
+<h3>Dog CEO API</h3>
+<p>The breed list endpoint gives every real dog breed name, which is stored in the
+breeds table. The breed images endpoint gives a real photo of each breed, stored as
+an image URL on the same table.</p>
+
+<h3>Faker Gem</h3>
+<p>Faker generates all of the review data, including the reviewer names, ratings,
+comments, and the three trait scores for playfulness, affection, and ease of care.</p>
+
+<h2>Database Structure</h2>
+
+<h3>Groups</h3>
+<table border="1">
+  <tr>
+    <th>Column</th>
+    <th>Type</th>
+  </tr>
+  <tr>
+    <td>id</td>
+    <td>integer (PK)</td>
+  </tr>
+  <tr>
+    <td>name</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>created_at</td>
+    <td>timestamp</td>
+  </tr>
+  <tr>
+    <td>updated_at</td>
+    <td>timestamp</td>
+  </tr>
+</table>
+
+<h3>Breeds</h3>
+<table border="1">
+  <tr>
+    <th>Column</th>
+    <th>Type</th>
+  </tr>
+  <tr>
+    <td>id</td>
+    <td>integer (PK)</td>
+  </tr>
+  <tr>
+    <td>name</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>image_url</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>group_id</td>
+    <td>integer (FK)</td>
+  </tr>
+  <tr>
+    <td>created_at</td>
+    <td>timestamp</td>
+  </tr>
+  <tr>
+    <td>updated_at</td>
+    <td>timestamp</td>
+  </tr>
+</table>
+
+<h3>Reviews</h3>
+<table border="1">
+  <tr>
+    <th>Column</th>
+    <th>Type</th>
+  </tr>
+  <tr>
+    <td>id</td>
+    <td>integer (PK)</td>
+  </tr>
+  <tr>
+    <td>reviewer_name</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>rating</td>
+    <td>integer</td>
+  </tr>
+  <tr>
+    <td>comment</td>
+    <td>text</td>
+  </tr>
+  <tr>
+    <td>playfulness</td>
+    <td>integer</td>
+  </tr>
+  <tr>
+    <td>affection</td>
+    <td>integer</td>
+  </tr>
+  <tr>
+    <td>ease_of_care</td>
+    <td>integer</td>
+  </tr>
+  <tr>
+    <td>breed_id</td>
+    <td>integer (FK)</td>
+  </tr>
+  <tr>
+    <td>created_at</td>
+    <td>timestamp</td>
+  </tr>
+  <tr>
+    <td>updated_at</td>
+    <td>timestamp</td>
+  </tr>
+</table>
+
+<p>A group has many breeds, and a breed has many reviews.</p>
+
+<h2>Entity Relationship Diagram</h2>
+
+<%= image_tag "Intro_To_Rails_Dog_Breeds_ERD.png", width: 700 %>
