@@ -1,9 +1,11 @@
 class BreedsController < ApplicationController
   def index
+    @breeds = Breed.all
     if params[:query].present?
-      @breeds = Breed.where("name LIKE ?", "%#{params[:query]}%")
-    else
-      @breeds = Breed.all
+      @breeds = @breeds.where("name LIKE ?", "%#{params[:query]}%")
+    end
+    if params[:group_id].present?
+      @breeds = @breeds.where(group_id: params[:group_id])
     end
   end
 
