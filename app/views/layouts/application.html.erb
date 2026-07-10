@@ -22,6 +22,14 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
   </head>
 
+  <header>
+  <nav>
+   <%= link_to "Home", root_path %>
+   <%= link_to "All Breeds", breeds_path %>
+   <%= link_to "About", about_path %>
+  </nav>
+  </header>
+
   <body>
     <%= yield %>
   </body>
