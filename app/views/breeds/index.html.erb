@@ -1,12 +1,35 @@
-<h1>Dog Breeds</h1>
+<div class="hero">
+  <h1 class="page-title">Dog Breeds</h1>
+  <p class="page-description">Browse <%= @breeds.count %> dog breeds and see what owners think of them.</p>
+  <p class="hero-links">
+    Dog Groups:
+    <% Group.all.each do |group| %>
+      <%= group.name %><% unless group == Group.all.last %>, <% end %>
+    <% end %>
+    |
+    <a href="#" onclick="document.querySelector('.header-search').focus(); return false;">Click here to search a breed</a>
+  </p>
+</div>
 
-<p>Browse <%= @breeds.count %> dog breeds and see what owners think of them.</p>
-
-<% @breeds.each do |breed| %>
-  <div>
-    <%= image_tag breed.image_url, width: 200 %>
-    <h3><%= link_to breed.name, breed_path(breed) %></h3>
-    <p>Group: <%= breed.group.name %></p>
-    <p><%= breed.reviews.count %> reviews</p>
+<div class="page-body">
+  <div class="row">
+    <% @breeds.each do |breed| %>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <%= image_tag breed.image_url, class: "card-img-top" %>
+          <div class="card-body">
+            <h3 class="card-title"><%= breed.name %></h3>
+            <p>Group: <%= breed.group.name %></p>
+            <% if breed.reviews.count > 0 %>
+              <p>Reviews: <%= breed.reviews.count %></p>
+            <% else %>
+              <p>No reviews yet</p>
+            <% end %>
+            <hr class="card-divider">
+            <%= link_to "Learn More >", breed_path(breed), class: "learn-more" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
