@@ -60,6 +60,22 @@ body {
   width: 100%;
 }
 
+.header-search-btn {
+  padding: 10px 20px;
+  background: var(--brand-navy);
+  color: var(--brand-white);
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.header-search-btn:hover {
+  background: var(--brand-blue);
+  border: 2px solid var(--brand-navy);
+}
+
 .header-group-select {
   padding: 10px 14px;
   border: 2px solid var(--brand-navy);

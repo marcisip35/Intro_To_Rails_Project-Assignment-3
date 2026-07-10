@@ -20,6 +20,7 @@
             options_from_collection_for_select(Group.all, :id, :name, params[:group_id]),
             include_blank: "All groups",
             class: "header-group-select" %>
+            <%= submit_tag "Search", class: "header-search-btn" %>
           <% end %>
         <nav class="header-nav">
           <%= link_to "Home", root_path %>
